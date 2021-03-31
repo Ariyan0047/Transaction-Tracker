@@ -38,7 +38,68 @@
             </div>
             <input type="submit" name="submit" value="SAVE" class="btn btn-outline-success form-control">
         </form>
+        <!-- END DATA FORM -->
     </div>
+
+    <?php
+    include "./connection.php";
+    // GETTING DATA BASED ON THERE FROM THE USER DATA TABLE
+    $sql = "SELECT * FROM data ORDER BY id";
+
+    // MAKING THE QUERY REQUEST
+    $result = mysqli_query($connection, $sql);
+
+    // GETTING THE REQUESTED RESULT AS AN ASSOCIATIVE ARRAY
+    $datalists = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    ?>
+
+    <section class="main-section text-uppercase">
+
+        <!-- INCLUDING HEADER AND NAVBAR -->
+        <?php
+// include "./templates/header.php";
+?>
+        <!-- END HEADER AND NAVBAR -->
+
+        <!-- DATA SECTION -->
+        <div class="container px-4 mt-3">
+            <?php foreach ($datalists as $data): ?>
+
+            <?php
+            $id = $data["id"];
+            $amount = $data["amount"];
+            $category = $data["category"];
+            $date = date("m-d-Y", strtotime($data["created_at"]));
+            ?>
+
+            <div class="items">
+                <div class="row gx-5 align-items-center justify-content-md-center">
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <div class="p-3 border bg-light"><?php echo $date; ?></div>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <div class="p-3 border bg-light"><?php echo $category; ?></div>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <div class="p-3 border bg-light">$: <?php echo $amount; ?></div>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <div class="p-2 border bg-light">
+
+
+                            <a href="" class="btn1 btn btn-warning text-uppercase">update</a>
+
+                            <a href="" name="delete" class="btn1 btn btn-danger text-uppercase">delete</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <!-- END DATA SECTION -->
+    </section>
+
 
 
 

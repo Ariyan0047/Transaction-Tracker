@@ -1,7 +1,6 @@
 <?php
 
-($connection = new mysqli("localhost", "root", "", "crud")) or
-  die(mysqli_error($connection));
+include "./connection.php";
 
 if (isset($_POST["submit"])) {
   $date = $_POST["date"];
