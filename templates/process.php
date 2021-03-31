@@ -3,6 +3,9 @@
 ($connection = new mysqli("localhost", "root", "", "crud")) or
   die(mysqli_error($connection));
 
+session_start();
+
+// INSERTING DATA IN THE DATAVASE TABLE DATA
 if (isset($_POST["submit"])) {
   $date = $_POST["date"];
   $amount = $_POST["amount"];
@@ -10,17 +13,21 @@ if (isset($_POST["submit"])) {
 
   $insertSql = "INSERT INTO data(amount,category,created_at) VALUES('$amount','$category','$date')";
   if (mysqli_query($connection, $insertSql)) {
+    $_SESSION["message"] = "RECORD HAS BEEN SAVED";
+    $_SESSION["msg_type"] = "success";
     header("Location: ../index.php");
   }
 }
 
-// DELETING ITEMS
+// DELETING ITEMS FROM DATA IN THE DATAVASE TABLE DATA
 if (isset($_GET["delete"])) {
   $id = $_GET["delete"];
 
   // DELETING THE MATCHED ID
   $deleteSql = "DELETE FROM data WHERE id = $id";
   if (mysqli_query($connection, $deleteSql)) {
+    $_SESSION["message"] = "RECORD HAS BEEN DELETED";
+    $_SESSION["msg_type"] = "danger";
     header("Location: ../index.php");
   }
 }

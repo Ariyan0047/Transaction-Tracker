@@ -19,6 +19,18 @@
 
     <!-- INSERT DATA FORM -->
     <?php require_once "./templates/process.php"; ?>
+
+    <!-- RECORD ALERT -->
+    <?php if (isset($_SESSION["message"])): ?>
+    <div class="alert alert-<?= $_SESSION["msg_type"] ?>">
+        <?php
+        echo $_SESSION["message"];
+        unset($_SESSION["message"]);
+        ?>
+    </div>
+    <?php endif; ?>
+    <!-- END RECORD ALERT -->
+
     <div class="container mt-4 p-4">
         <form action="./templates/process.php" method="POST">
             <div class="text-uppercase">
