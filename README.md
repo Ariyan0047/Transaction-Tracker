@@ -1,16 +1,16 @@
 ## RUN XAMMP SERVER
 
-## CREATE A DATABASE `crud`
+## CREATE A DATABASE USING `crud` `CREATE DATABASE crud`
 
 To import database
 
-# SELECT DATABASE
+# SELECT DATABASE `crud`
 
 ## GO TO IMPORT
 
 To run the application
 
-## IMPORT `data.sql` IN THE IMPORT FIELD
+## IMPORT `data.sql` IN THE MYPHPADMIN PANEL
 
 TO RUN THE APPLICATION
 

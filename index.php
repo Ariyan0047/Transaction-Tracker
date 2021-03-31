@@ -96,20 +96,20 @@
 
     <div class="container px-4 text-muted text-center text-capitalize">
         <div class="row gx-5">
-            <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 mt-2 mb-2">
+                <div class="p-3 border bg-light">transaction tracker</div>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-4">
                 <div class="p-3 border bg-light">Total Debit : <?php echo array_sum(
                   $debit
                 ); ?></div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3">
-                <div class="p-3 border bg-light">transaction tracker</div>
-            </div>
-            <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="col-sm-12 col-md-3 col-lg-4">
                 <div class="p-3 border bg-light">Total Credit : <?php echo array_sum(
                   $credit
                 ); ?></div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 mt-2">
+            <div class="col-sm-12 col-md-3 col-lg-4">
                 <div class="p-3 border bg-light">Total Balance : <?php echo array_sum(
                   $debit
                 ) - array_sum($credit); ?></div>
@@ -146,21 +146,20 @@
 
     <div class="container px-4 text-muted text-center text-capitalize mt-4">
         <div class="row gx-5">
-
-            <div class="col-sm-12 col-md-2 col-lg-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 mt-2 mb-2">
+                <div class="p-3 border bg-light">transaction in a month</div>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-4">
                 <div class="p-3 border bg-light">Total Debit : <?php echo array_sum(
                   $debit
                 ); ?></div>
             </div>
-            <div class="col-sm-12 col-md-2 col-lg-3">
-                <div class="p-3 border bg-light">transaction in a month</div>
-            </div>
-            <div class="col-sm-12 col-md-2 col-lg-3">
+            <div class="col-sm-12 col-md-2 col-lg-4">
                 <div class="p-3 border bg-light">Total Credit : <?php echo array_sum(
                   $credit
                 ); ?></div>
             </div>
-            <div class="col-sm-12 col-md-2 col-lg-3">
+            <div class="col-sm-12 col-md-2 col-lg-4">
                 <div class="p-3 border bg-light">Total Balance : <?php echo array_sum(
                   $debit
                 ) - array_sum($credit); ?></div>
@@ -199,10 +198,10 @@
                         <div class="p-2 border bg-light">
 
                             <a href="index.php?edit=<?php echo $id; ?>"
-                                class="btn1 btn btn-warning text-capitalize m-0">update</a>
+                                class="btn1 btn btn-warning text-capitalize">update</a>
 
                             <a href="./templates/process.php?delete=<?php echo $id; ?>" name="delete"
-                                class="btn1 btn btn-danger text-capitalize m-0">delete</a>
+                                class="btn1 btn btn-danger text-capitalize">delete</a>
 
                         </div>
                     </div>
