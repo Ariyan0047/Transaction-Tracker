@@ -86,31 +86,91 @@
     // COUNTING TOTAL NUMBERS OF DEBIT & CREDIT IN THE DATABASE
     foreach ($datalists as $data) {
       if ($data["category"] === "income") {
-        array_push($debit, $data["category"]);
+        array_push($debit, $data["amount"]);
       } else {
-        array_push($credit, $data["category"]);
+        array_push($credit, $data["amount"]);
       }
     }
     ?>
 
 
-    <div class="container px-4 text-muted text-center">
+    <div class="container px-4 text-muted text-center text-capitalize">
         <div class="row gx-5">
-            <div class="col-sm-12 col-md-3 col-lg-4">
-                <div class="p-3 border bg-light">total debit : <?php echo count(
-              $debit
-            ); ?></div>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="p-3 border bg-light">Total Debit : <?php echo array_sum(
+                  $debit
+                ); ?></div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-4">
+            <div class="col-sm-12 col-md-3 col-lg-3">
                 <div class="p-3 border bg-light">transaction tracker</div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-4">
-                <div class="p-3 border bg-light">total credit : <?php echo count(
-              $credit
-            ); ?></div>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="p-3 border bg-light">Total Credit : <?php echo array_sum(
+                  $credit
+                ); ?></div>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-3 mt-2">
+                <div class="p-3 border bg-light">Total Balance : <?php echo array_sum(
+                  $debit
+                ) - array_sum($credit); ?></div>
             </div>
         </div>
     </div>
+
+
+
+    <?php
+    $sql =
+      "select * from data where created_at > DATE_ADD(NOW(),INTERVAL -1 MONTH) order by id";
+
+    // MAKING THE QUERY REQUEST
+    $result = mysqli_query($connection, $sql);
+
+    // GETTING THE REQUESTED RESULT AS AN ASSOCIATIVE ARRAY
+    $datalists = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    // EMPTY ARRAY'S TO STORE DEBIT CREDIT
+    $debit = [];
+    $credit = [];
+
+    // COUNTING TOTAL NUMBERS OF DEBIT & CREDIT IN THE DATABASE
+    foreach ($datalists as $data) {
+      if ($data["category"] === "income") {
+        array_push($debit, $data["amount"]);
+      } else {
+        array_push($credit, $data["amount"]);
+      }
+    }
+    ?>
+
+
+    <div class="container px-4 text-muted text-center text-capitalize mt-4">
+        <div class="row gx-5">
+
+            <div class="col-sm-12 col-md-2 col-lg-3">
+                <div class="p-3 border bg-light">Total Debit : <?php echo array_sum(
+                  $debit
+                ); ?></div>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-3">
+                <div class="p-3 border bg-light">transaction in a month</div>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-3">
+                <div class="p-3 border bg-light">Total Credit : <?php echo array_sum(
+                  $credit
+                ); ?></div>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-3">
+                <div class="p-3 border bg-light">Total Balance : <?php echo array_sum(
+                  $debit
+                ) - array_sum($credit); ?></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <section class="main-section text-uppercase">
         <!-- DATA SECTION -->
@@ -125,7 +185,7 @@
             ?>
 
             <div class="items">
-                <div class="row gx-5 align-items-center justify-content-md-center">
+                <div class="row gx-5 align-items-center justify-content-center">
                     <div class="col-sm-12 col-md-3 col-lg-3">
                         <div class="p-3 border bg-light"><?php echo $date; ?></div>
                     </div>
@@ -139,10 +199,10 @@
                         <div class="p-2 border bg-light">
 
                             <a href="index.php?edit=<?php echo $id; ?>"
-                                class="btn1 btn btn-warning text-uppercase">update</a>
+                                class="btn1 btn btn-warning text-capitalize m-0">update</a>
 
                             <a href="./templates/process.php?delete=<?php echo $id; ?>" name="delete"
-                                class="btn1 btn btn-danger text-uppercase">delete</a>
+                                class="btn1 btn btn-danger text-capitalize m-0">delete</a>
 
                         </div>
                     </div>

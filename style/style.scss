@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.container div {
+  font-size: 1rem !important;
+}
+
 .close {
   border: none !important;
   outline: none !important;
@@ -21,8 +25,9 @@
   padding: 0.2rem 1rem;
 }
 
-.btn1 {
-  width: 45%;
+a.btn1 {
+  font-size: 0.6rem !important;
+  width: 44%;
   margin: auto 0.25rem;
 }
 
