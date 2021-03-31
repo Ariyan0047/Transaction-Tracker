@@ -1,6 +1,6 @@
 ## RUN XAMMP SERVER
 
-## CREATE A DATABASE USING `crud` `CREATE DATABASE crud`
+## CREATE A DATABASE `crud` `CREATE DATABASE crud`
 
 To import database
 
