@@ -17,25 +17,28 @@
 <body>
 
     <!-- INSERT DATA FORM -->
-    <form action="index.php" method="POST" class="container">
-        <div class="text-uppercase">
-            <div class="form-group">
-                <input type="date" name="date" class="form-control" required>
+    <?php require_once "./templates/process.php"; ?>
+    <div class="container mt-4 p-4">
+        <form action="./templates/process.php" method="POST">
+            <div class="text-uppercase">
+                <div class="form-group">
+                    <input type="date" name="date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <select class="form-control text-uppercase" name="category" required>
+                        <option disabled selected>SELECT CATEGORY</option>
+                        <option value="income">income</option>
+                        <option value="food">food</option>
+                        <option value="transport">transport</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="amount" class="form-control" required>
+                </div>
             </div>
-            <div class="form-group">
-                <select class="form-control text-uppercase" name="category" required>
-                    <option disabled selected>SELECT CATEGORY</option>
-                    <option value="income">income</option>
-                    <option value="food">food</option>
-                    <option value="transport">transport</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="number" name="amount" class="form-control" required>
-            </div>
-        </div>
-        <input type="submit" name="submit" value="SAVE" class="btn btn-outline-success w-50">
-    </form>
+            <input type="submit" name="submit" value="SAVE" class="btn btn-outline-success form-control">
+        </form>
+    </div>
 
 
 
