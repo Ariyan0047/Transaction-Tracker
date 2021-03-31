@@ -10,7 +10,7 @@ To import database
 
 To run the application
 
-## IMPORT `data.sql` IN THE MYPHPADMIN PANEL
+## IMPORT `data.sql` IN THE IMPORT FIELD
 
 TO RUN THE APPLICATION
 
