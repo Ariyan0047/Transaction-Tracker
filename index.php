@@ -36,13 +36,13 @@
         <form action="./templates/process.php" method="POST">
             <div class="text-uppercase">
                 <div class="form-group">
-                    <input type="hidden" name="date" class="form-control" value="<?php echo $id; ?>">
+                    <input type="hidden" name="id" class="form-control" value="<?php echo $id; ?>">
                 </div>
                 <div class="form-group">
-                    <input type="date" name="date" class="form-control" value="<?php echo $date; ?>" required>
+                    <input type="date" name="date" class="form-control" value="<?php echo $dateObj; ?>" required>
                 </div>
                 <div class="form-group">
-                    <select class="form-control text-uppercase" name="category" value="<?php echo $category; ?>"
+                    <select class="form-control text-uppercase" name="category" value="<?php echo $categoryObj; ?>"
                         required>
                         <option disabled selected>SELECT CATEGORY</option>
                         <option value="income">income</option>
@@ -51,13 +51,14 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="number" name="amount" class="form-control" value="<?php echo $amount; ?>" required>
+                    <input type="number" name="amount" class="form-control" value="<?php echo $amountObj; ?>" required>
                 </div>
             </div>
             <?php if ($update == true): ?>
-            <input type="submit" name="update" value="SAVE" class="btn btn-outline-info form-control">
+            <button name="update" class="btn btn-outline-info form-control">UPDATE</button>
+            <?php else: ?>
+            <button name="submit" class="btn btn-outline-success form-control">SAVE</button>
             <?php endif; ?>
-            <input type="submit" name="submit" value="SAVE" class="btn btn-outline-success form-control">
         </form>
         <!-- END DATA FORM -->
     </div>
@@ -111,7 +112,7 @@
                     <div class="col-sm-12 col-md-3 col-lg-3">
                         <div class="p-2 border bg-light">
 
-                            <a href="./templates/process.php?edit=<?php echo $id; ?>"
+                            <a href="index.php?edit=<?php echo $id; ?>"
                                 class="btn1 btn btn-warning text-uppercase">update</a>
 
                             <a href="./templates/process.php?delete=<?php echo $id; ?>" name="delete"
