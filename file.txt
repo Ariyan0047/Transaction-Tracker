@@ -1,1 +1,0 @@
-./templates/sub.php?id=<?php echo $id; ?>&date=<?php echo $date; ?>&amount=<?php echo $amount; ?>&category=<?php echo $category; ?>
