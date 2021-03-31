@@ -11,6 +11,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- CUSTOM STYLE SHEET -->
+    <link rel="stylesheet" href="./style/style.css">
     <title>TRANSACTION TRACKER</title>
 </head>
 
@@ -42,7 +43,9 @@
     </div>
 
     <?php
-    include "./connection.php";
+    ($connection = new mysqli("localhost", "root", "", "crud")) or
+      die(mysqli_error($connection));
+
     // GETTING DATA BASED ON THERE FROM THE USER DATA TABLE
     $sql = "SELECT * FROM data ORDER BY id";
 
@@ -86,10 +89,10 @@
                     <div class="col-sm-12 col-md-3 col-lg-3">
                         <div class="p-2 border bg-light">
 
+                            <a href="index.php?edit=" class="btn1 btn btn-warning text-uppercase">update</a>
 
-                            <a href="" class="btn1 btn btn-warning text-uppercase">update</a>
-
-                            <a href="" name="delete" class="btn1 btn btn-danger text-uppercase">delete</a>
+                            <a href="./templates/process.php?delete=<?php echo $id; ?>" name="delete"
+                                class="btn1 btn btn-danger text-uppercase">delete</a>
 
                         </div>
                     </div>

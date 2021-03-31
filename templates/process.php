@@ -1,6 +1,7 @@
 <?php
 
-include "./connection.php";
+($connection = new mysqli("localhost", "root", "", "crud")) or
+  die(mysqli_error($connection));
 
 if (isset($_POST["submit"])) {
   $date = $_POST["date"];
@@ -13,4 +14,14 @@ if (isset($_POST["submit"])) {
   }
 }
 
+// DELETING ITEMS
+if (isset($_GET["delete"])) {
+  $id = $_GET["delete"];
+
+  // DELETING THE MATCHED ID
+  $deleteSql = "DELETE FROM data WHERE id = $id";
+  if (mysqli_query($connection, $deleteSql)) {
+    header("Location: ../index.php");
+  }
+}
 ?>
