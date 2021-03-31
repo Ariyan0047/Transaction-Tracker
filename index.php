@@ -65,6 +65,7 @@
 
     <!-- END FORM SECTION -->
 
+
     <?php
     ($connection = new mysqli("localhost", "root", "", "crud")) or
       die(mysqli_error($connection));
@@ -77,16 +78,41 @@
 
     // GETTING THE REQUESTED RESULT AS AN ASSOCIATIVE ARRAY
     $datalists = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    // EMPTY ARRAY'S TO STORE DEBIT CREDIT
+    $debit = [];
+    $credit = [];
+
+    // COUNTING TOTAL NUMBERS OF DEBIT & CREDIT IN THE DATABASE
+    foreach ($datalists as $data) {
+      if ($data["category"] === "income") {
+        array_push($debit, $data["category"]);
+      } else {
+        array_push($credit, $data["category"]);
+      }
+    }
     ?>
 
+
+    <div class="container px-4 text-muted text-center">
+        <div class="row gx-5">
+            <div class="col-sm-12 col-md-3 col-lg-4">
+                <div class="p-3 border bg-light">total debit : <?php echo count(
+              $debit
+            ); ?></div>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-4">
+                <div class="p-3 border bg-light">transaction tracker</div>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-4">
+                <div class="p-3 border bg-light">total credit : <?php echo count(
+              $credit
+            ); ?></div>
+            </div>
+        </div>
+    </div>
+
     <section class="main-section text-uppercase">
-
-        <!-- INCLUDING HEADER AND NAVBAR -->
-        <?php
-// include "./templates/header.php";
-?>
-        <!-- END HEADER AND NAVBAR -->
-
         <!-- DATA SECTION -->
         <div class="container px-4 mt-3">
             <?php foreach ($datalists as $data): ?>
