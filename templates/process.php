@@ -1,9 +1,14 @@
 <?php
+session_start();
 
 ($connection = new mysqli("localhost", "root", "", "crud")) or
   die(mysqli_error($connection));
 
-session_start();
+$id = 0;
+$date = "";
+$amount = 0;
+$category = "";
+$update = false;
 
 // INSERTING DATA IN THE DATAVASE TABLE DATA
 if (isset($_POST["submit"])) {
@@ -30,5 +35,11 @@ if (isset($_GET["delete"])) {
     $_SESSION["msg_type"] = "danger";
     header("Location: ../index.php");
   }
+}
+
+// UPDATING EXSITING VALUES
+if (isset($_GET["edit"])) {
+  $id = $_GET["edit"];
+  $update = true;
 }
 ?>

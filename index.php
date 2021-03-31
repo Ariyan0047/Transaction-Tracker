@@ -31,14 +31,19 @@
     <?php endif; ?>
     <!-- END RECORD ALERT -->
 
+    <!-- FORM SECTION -->
     <div class="container mt-4 p-4">
         <form action="./templates/process.php" method="POST">
             <div class="text-uppercase">
                 <div class="form-group">
-                    <input type="date" name="date" class="form-control" required>
+                    <input type="hidden" name="date" class="form-control" value="<?php echo $id; ?>">
                 </div>
                 <div class="form-group">
-                    <select class="form-control text-uppercase" name="category" required>
+                    <input type="date" name="date" class="form-control" value="<?php echo $date; ?>" required>
+                </div>
+                <div class="form-group">
+                    <select class="form-control text-uppercase" name="category" value="<?php echo $category; ?>"
+                        required>
                         <option disabled selected>SELECT CATEGORY</option>
                         <option value="income">income</option>
                         <option value="food">food</option>
@@ -46,13 +51,18 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="number" name="amount" class="form-control" required>
+                    <input type="number" name="amount" class="form-control" value="<?php echo $amount; ?>" required>
                 </div>
             </div>
+            <?php if ($update == true): ?>
+            <input type="submit" name="update" value="SAVE" class="btn btn-outline-info form-control">
+            <?php endif; ?>
             <input type="submit" name="submit" value="SAVE" class="btn btn-outline-success form-control">
         </form>
         <!-- END DATA FORM -->
     </div>
+
+    <!-- END FORM SECTION -->
 
     <?php
     ($connection = new mysqli("localhost", "root", "", "crud")) or
@@ -101,7 +111,8 @@
                     <div class="col-sm-12 col-md-3 col-lg-3">
                         <div class="p-2 border bg-light">
 
-                            <a href="index.php?edit=" class="btn1 btn btn-warning text-uppercase">update</a>
+                            <a href="./templates/process.php?edit=<?php echo $id; ?>"
+                                class="btn1 btn btn-warning text-uppercase">update</a>
 
                             <a href="./templates/process.php?delete=<?php echo $id; ?>" name="delete"
                                 class="btn1 btn btn-danger text-uppercase">delete</a>
